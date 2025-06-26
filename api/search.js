@@ -3,12 +3,12 @@ import Typesense from 'typesense';
 const client = new Typesense.Client({
   nodes: [
     {
-      host: 'u4yiph37ds8ie2xcp-1.a1.typesense.net', // teu cluster correto
+      host: process.env.TYPESENSE_HOST,
       port: 443,
       protocol: 'https',
     },
   ],
-  apiKey: '5egQcnYMrhhXdI6UliCrHBArXHdqkyM', // tua chave API correta
+  apiKey: process.env.TYPESENSE_KEY,
   connectionTimeoutSeconds: 5,
 });
 
