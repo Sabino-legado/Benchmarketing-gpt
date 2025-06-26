@@ -1,14 +1,35 @@
-export default async function handler(req, res) {
-  const query = req.query.q || 'vazio';
+const express = require('express');
+const Typesense = require('typesense');
+require('dotenv').config();
 
-  // Simulação de resposta
-  const resultados = [
-    { produto: "Curso Tráfego Pago", fonte: "YouTube", tipo: "Orgânico" },
-    { produto: "Ferramenta SEO", fonte: "Instagram", tipo: "Pago" }
-  ];
+const app = express();
+app.use(express.json());
 
-  res.status(200).json({
-    mensagem: Você pesquisou por: ${query},
-    dados: resultados
-  });
-}
+const client = new Typesense.Client({
+  nodes: [
+    {
+      host: 'u4yiph37ds8ie2xcp-1.a1.typesense.net', // Teu cluster Typesense
+      port: 443,
+      protocol: 'https',
+    },
+  ],
+  apiKey: '5egQcnYMrhhXdl6UiCfHBAxXHdqkyMl', // Tua chave de Admin
+  connectionTimeoutSeconds: 5,
+});
+
+// Endpoint de busca
+app.get('/api/search', async (req, res) => {
+  try {
+    const query = req.query.q;
+    const results = await client.collections('conteudos').documents().search({
+      q: query,
+      query_by: 'titulo,descricao,categoria',
+    });
+
+    res.json(results.hits.map(hit => hit.document));
+  } catch (error) {
+    res.status(500).json({ erro: 'Erro na busca', detalhe: error.message });
+  }
+});
+
+module.exports = app;
