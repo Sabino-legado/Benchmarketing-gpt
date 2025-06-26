@@ -3,12 +3,12 @@ import Typesense from 'typesense';
 const client = new Typesense.Client({
   nodes: [
     {
-      host: 'u4y1ph37ds8ie2xcp-1.a1.typesense.net', // Este é o host correto
+      host: 'u4yiph37ds8ie2xcp-1.a1.typesense.net', // teu cluster correto
       port: 443,
       protocol: 'https',
     },
   ],
-  apiKey: '5egQcnYMrhhXdI6UliCrHBArXHdqkyM',
+  apiKey: '5egQcnYMrhhXdI6UliCrHBArXHdqkyM', // tua chave API correta
   connectionTimeoutSeconds: 5,
 });
 
@@ -21,11 +21,11 @@ export default async function handler(req, res) {
 
   try {
     const resultados = await client
-      .collections('conteudos') // o nome da collection deve existir no painel Typesense
+      .collections('conteudos')
       .documents()
       .search({
         q: query,
-        query_by: 'titulo,descricao,categoria', // esses campos precisam existir nos teus documentos
+        query_by: 'titulo,descricao,categoria',
       });
 
     return res.status(200).json({
