@@ -1,14 +1,8 @@
-{
-  "functions": {
-    "api/index.js": {
-      "runtime": "nodejs18.x"
-    },
-    "api/search.js": {
-      "runtime": "nodejs18.x"
-    }
-  },
-  "routes": [
-    { "src": "/api/search", "dest": "api/search.js" },
-    { "src": "/api/.*", "dest": "api/index.js" }
-  ]
-}
+# 1. Remover o arquivo com configuração errada
+git rm vercel.json
+
+# 2. Commit da remoção com uma mensagem clara
+git commit -m "Remover vercel.json para corrigir erro de runtime"
+
+# 3. Enviar a atualização para o GitHub
+git push
