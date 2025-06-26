@@ -8,12 +8,12 @@ app.use(express.json());
 const client = new Typesense.Client({
   nodes: [
     {
-      host: 'u4yiph37ds8ie2xcp-1.a1.typesense.net', // Teu cluster Typesense
+      host: 'u4yiph37ds8ie2xcp-1.a1.typesense.net', // u4y1ph37ds8ie2xcp
       port: 443,
       protocol: 'https',
     },
   ],
-  apiKey: '5egQcnYMrhhXdl6UiCfHBAxXHdqkyMl', // Tua chave de Admin
+  apiKey: '5egQcnYMrhhXdl6UiCfHBAxXHdqkyMl', // u4y1ph37ds8ie2xcp
   connectionTimeoutSeconds: 5,
 });
 
