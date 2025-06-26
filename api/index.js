@@ -20,10 +20,13 @@ export default async function handler(req, res) {
   const query = req.query.q || '';
 
   try {
-    const resultados = await client.collections('conteudos').documents().search({
-      q: query,
-      query_by: 'titulo,descricao,categoria',
-    });
+    const resultados = await client
+      .collections('conteudos')
+      .documents()
+      .search({
+        q: query,
+        query_by: 'titulo,descricao,categoria',
+      });
 
     return res.status(200).json({
       mensagem: Resultados encontrados para: ${query},
