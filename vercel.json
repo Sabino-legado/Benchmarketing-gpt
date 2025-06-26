@@ -1,8 +1,0 @@
-# 1. Remover o arquivo com configuração errada
-git rm vercel.json
-
-# 2. Commit da remoção com uma mensagem clara
-git commit -m "Remover vercel.json para corrigir erro de runtime"
-
-# 3. Enviar a atualização para o GitHub
-git push
