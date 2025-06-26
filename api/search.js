@@ -12,4 +12,4 @@ export default async function handler(req, res) {
     dados: resultados
   });
 }
-fix: reevio real do código da função search
+fix: reenvio real do código da função search
