@@ -1,0 +1,8 @@
+{
+  "name": "benchmarketing-gpt",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "typesense": "^1.2.0"
+  }
+}
