@@ -1,21 +1,32 @@
 import Typesense from 'typesense';
 
 const client = new Typesense.Client({
-  nodes: [{ host: 'u4yiph37ds8ie2xcp-1.a1.typesense.net', port: 443, protocol: 'https' }],
-  apiKey: '5egQcnYMrhhXdl6UiCfHBAxXHdqkyMl',
+  nodes: [
+    {
+      host: 'u4y1ph37ds8ie2xcp-1.a1.typesense.net', // Este é o host correto
+      port: 443,
+      protocol: 'https',
+    },
+  ],
+  apiKey: '5egQcnYMrhhXdI6UliCrHBArXHdqkyM',
   connectionTimeoutSeconds: 5,
 });
 
 export default async function handler(req, res) {
-  if (req.method !== 'GET') return res.status(405).json({ erro: 'Método não permitido' });
+  if (req.method !== 'GET') {
+    return res.status(405).json({ erro: 'Método não permitido' });
+  }
 
   const query = req.query.q || '';
 
   try {
-    const resultados = await client.collections('conteudos').documents().search({
-      q: query,
-      query_by: 'titulo,descricao,categoria',
-    });
+    const resultados = await client
+      .collections('conteudos') // o nome da collection deve existir no painel Typesense
+      .documents()
+      .search({
+        q: query,
+        query_by: 'titulo,descricao,categoria', // esses campos precisam existir nos teus documentos
+      });
 
     return res.status(200).json({
       mensagem: `Resultados encontrados para: ${query}`,
