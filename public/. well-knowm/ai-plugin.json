@@ -1,0 +1,15 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Benchmarketing Assistant",
+  "name_for_model": "benchmark_assistant",
+  "description_for_human": "Busca conhecimento técnico de campanhas (ROAS, CPA, CPC).",
+  "description_for_model": "Acessa base de dados sobre tráfego pago e responde perguntas com precisão.",
+  "auth": { "type": "none" },
+  "api": {
+    "type": "openapi",
+    "url": "https://teu-vercel-url.vercel.app/.well-known/openapi.yaml"
+  },
+  "logo_url": "https://teu-vercel-url.vercel.app/logo.png",
+  "contact_email": "sab@benchmaster.ai",
+  "legal_info_url": "https://benchmaster.ai/legal"
+}
