@@ -1,9 +1,10 @@
 import Typesense from 'typesense';
 
+console.log('TYPESENSE_CLUSTER:', process.env.TYPESENSE_CLUSTER); // Adicione isso
 const client = new Typesense.Client({
   nodes: [
     {
-      host: process.env.TYPESENSE_CLUSTER, // Correção: Usa TYPESENSE_CLUSTER
+      host: process.env.TYPESENSE_CLUSTER,
       port: 443,
       protocol: 'https',
     },
@@ -33,7 +34,7 @@ export default async function handler(req, res) {
       dados: resultados.hits.map((hit) => hit.document),
     });
   } catch (erro) {
-    console.error('Erro no Typesense:', erro); // Log para debug
+    console.error('Erro no Typesense:', erro);
     return res.status(500).json({
       erro: 'Erro ao buscar dados no Typesense',
       detalhes: erro.message,
