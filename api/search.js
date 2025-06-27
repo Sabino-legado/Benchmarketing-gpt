@@ -1,6 +1,6 @@
 import Typesense from 'typesense';
 
-console.log('TYPESENSE_CLUSTER:', process.env.TYPESENSE_CLUSTER); // Adicione isso
+console.log('TYPESENSE_CLUSTER:', process.env.TYPESENSE_CLUSTER); 
 const client = new Typesense.Client({
   nodes: [
     {
