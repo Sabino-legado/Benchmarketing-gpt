@@ -8,7 +8,7 @@ const client = new Typesense.Client({
       protocol: 'https',
     },
   ],
-  apiKey: process.env.TYPESENSE_KEY,
+  apiKey: process.env.TYPESENSE_API_KEY,
   connectionTimeoutSeconds: 5,
 });
 
