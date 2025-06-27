@@ -1,11 +1,10 @@
 import Typesense from 'typesense';
 
 console.log('TYPESENSE_CLUSTER:', process.env.TYPESENSE_CLUSTER);
-const host = process.env.TYPESENSE_CLUSTER || 'u4y1ph37ds8ie2xcp-1.a1.typesense.net'; // Fallback para debug
 const client = new Typesense.Client({
   nodes: [
     {
-      host: host,
+      host: process.env.TYPESENSE_CLUSTER,
       port: 443,
       protocol: 'https',
     },
